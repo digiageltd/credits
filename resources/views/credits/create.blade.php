@@ -94,7 +94,7 @@
                                     {{ trans('credits.button.store.credit') }}
                                 </button>
                                 <a href="{{ url()->previous() }}"
-                                   class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
+                                   class="text-sm font-semibold leading-6 text-gray-900">{{ trans('credits.button.cancel') }}</a>
                             </div>
                         </form>
                     </div>

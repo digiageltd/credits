@@ -12,6 +12,8 @@ return [
     'button.create.credit' => 'Create Credit',
     'button.store.credit' => 'Create',
     'button.make.global.payment' => 'Make Payment',
+    'button.cancel' => 'Cancel',
+    'button.show' => 'Show',
 
     // Table
     'table.borrower.name' => 'Borrower Name',
@@ -23,7 +25,9 @@ return [
     'table.credit.status' => 'Credit Status',
     'table.credit.status.active' => 'Active',
     'table.credit.status.closed' => 'Closed/Paid',
-    'table.no.credits' => 'No Records Found',
+    'table.payment.amount' => 'Payment Amount',
+    'table.no.credits' => 'No Records Found!',
+    'table.no.payments.made' => 'No Payments made yet!',
 
     // Forms
     'form.create.label.first.name' => 'First Name',
@@ -41,6 +45,7 @@ return [
     'page.show.credit.term' => 'Credit Term',
     'page.show.credit.remaining' => 'Credit Remaining Amount',
     'page.show.credit.status' => 'Status',
+    'page.show.payments' => 'Payments',
 
     // mae = max amount exceeded
     'page.mae.total' => 'Total Amount in BGN of Active Credits',
@@ -48,6 +53,7 @@ return [
 
     // General
     'general.month' => '{1} :value month|[2,*] :value months',
+    'currency' => 'bgn',
 
     // Notifications
     'notification.credit.created.successfully' => 'Credit has been successfully created!',

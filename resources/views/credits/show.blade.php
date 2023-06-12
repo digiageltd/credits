@@ -34,12 +34,12 @@
                             class="font-bold">{{ trans('credits.page.show.credit.borrower') }}:</span> {{ $credit->borrower->name ?? '' }}
                         <span
                             class="font-bold pl-4">{{ trans('credits.page.show.credit.amount') }}:</span> {{ sprintf("%02.2f", $credit->human_amount) }}
-                        bgn
+                        {{ trans('credits.currency') }}
                         <span
                             class="font-bold pl-4">{{ trans('credits.page.show.credit.term') }}:</span>{{ trans_choice('credits.general.month', $credit->term, ['value' => $credit->term]) }}
                         <span
                             class="font-bold pl-4">{{ trans('credits.page.show.credit.remaining') }}:</span> {{ $credit->human_remaining_balance }}
-                        bgn
+                        {{ trans('credits.currency') }}
                         <span class="font-bold pl-4">{{ trans('credits.page.show.credit.status') }}:</span>
                         @if($credit->status)
                             <span
@@ -63,7 +63,7 @@
                                     {{ trans('credits.table.payment.status') }}
                                 </th>
                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                    <span class="sr-only">Pay</span>
+                                    <span class="sr-only">{{ trans('credits.button.make.payment') }}</span>
                                 </th>
                             </tr>
                             </thead>
@@ -71,7 +71,7 @@
                             @forelse($credit->installments as $installment)
                                 <tr>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                        {{ sprintf("%02.2f", $installment->human_amount) }} bgn
+                                        {{ sprintf("%02.2f", $installment->human_amount) }} {{ trans('credits.currency') }}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                         {{ \Carbon\Carbon::parse($installment->payment_date)->format('d.m.Y') }}
@@ -102,12 +102,45 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="pl-6 py-4"><h4>No Records Found</h4></td>
+                                    <td colspan="5" class="pl-6 py-4"><h4>{{ trans('credits.table.no.credits') }}</h4></td>
                                 </tr>
                             @endforelse
                             </tbody>
                         </table>
                     </div>
+                    <div class="py-6">
+                        <h1 class="font-bold text-2xl">{{ trans('credits.page.show.payments') }}</h1>
+                    </div>
+                        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-300">
+                                <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        {{ trans('credits.table.payment.amount') }}
+                                    </th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        {{ trans('credits.table.payment.date') }}
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 bg-white">
+                                @forelse($credit->payments as $payment)
+                                    <tr>
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                            {{ sprintf("%02.2f", $payment->human_amount) }} {{ trans('credits.currency') }}
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {{ \Carbon\Carbon::parse($payment->created_at)->format('d.m.Y') }}
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="pl-6 py-4"><h4>{{ trans('credits.table.no.payments.made') }}</h4></td>
+                                    </tr>
+                                @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                 </div>
             </div>
         </div>

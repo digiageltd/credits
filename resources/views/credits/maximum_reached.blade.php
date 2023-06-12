@@ -23,7 +23,7 @@
                         </div>
                         <div class="p-4">
                             <span
-                                class="block">{{ trans('credits.page.mae.total') }}: <strong>{{ sprintf("%02.2f", $borrower->human_active_credits_total_amount) }}</strong> bgn</span>
+                                class="block">{{ trans('credits.page.mae.total') }}: <strong>{{ sprintf("%02.2f", $borrower->human_active_credits_total_amount) }}</strong> {{ trans('credits.currency') }}</span>
                             @if($remainingAmount > 0)
                                 <span
                                     class="block">{!! trans('credits.page.mae.max.possible', ['amount' => sprintf("%02.2f", $remainingAmount)]) !!} </span>

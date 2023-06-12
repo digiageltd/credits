@@ -49,9 +49,7 @@
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                     {{ trans('credits.table.credit.status') }}
                                 </th>
-                                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                    <span class="sr-only">Edit</span>
-                                </th>
+                                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"></th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
@@ -61,10 +59,10 @@
                                         {{ $credit->borrower->name }}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ sprintf("%02.2f", $credit->human_amount) }}
-                                        bgn
+                                        {{ trans('credits.currency') }}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ sprintf("%02.2f", $credit->installment_amount) }}
-                                        bgn
+                                        {{ trans('credits.currency') }}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                         {{ $credit->term }}
@@ -80,7 +78,7 @@
                                     </td>
                                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                         <a href="{{ route('credits.show', ['credit' => $credit]) }}"
-                                           class="lock rounded-md bg-yellow-400 border border-gray-700 transition ease-in-out delay-150 px-3 py-2 text-center text-sm font-semibold text-gray-700 shadow-sm hover:bg-black hover:text-white duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Show</a>
+                                           class="lock rounded-md bg-yellow-400 border border-gray-700 transition ease-in-out delay-150 px-3 py-2 text-center text-sm font-semibold text-gray-700 shadow-sm hover:bg-black hover:text-white duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">{{ trans('credits.button.show') }}</a>
                                         @if(!$credit->status)
                                             <a href="{{ route('payment.index', ['credit' => $credit]) }}"
                                                class="lock rounded-md bg-yellow-400 border border-gray-700 transition ease-in-out delay-150 px-3 py-2 text-center text-sm font-semibold text-gray-700 shadow-sm hover:bg-black hover:text-white duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">{{ trans('credits.button.make.payment') }}</a>
